@@ -1,9 +1,12 @@
+* [Home](https://jal054.github.io/cse15l-lab-reports)
+* [Lab Report 1 Week 2](https://jal054.github.io/cse15l-lab-reports/lab-report-1-week-2)
+
+# Test Page
+## TESTING
 *Italic*
 **Bold**
-# Heading 1
-## Heading 2
 [Link](http://google.com)
-![Image](https://upload.wikimedia.org/wikipedia/commons/6/62/Starsinthesky.jpg =100x)
+![Image](https://upload.wikimedia.org/wikipedia/commons/6/62/Starsinthesky.jpg)
 > Blockquote
 > Blockquote
 * List
