@@ -3,7 +3,7 @@
 # Heading 1
 ## Heading 2
 [Link](http://google.com)
-![Image](https://upload.wikimedia.org/wikipedia/commons/6/62/Starsinthesky.jpg)
+![Image](https://upload.wikimedia.org/wikipedia/commons/6/62/Starsinthesky.jpg =100x)
 > Blockquote
 > Blockquote
 * List
