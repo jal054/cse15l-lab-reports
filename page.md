@@ -15,5 +15,5 @@
 ---
 `Inline code`
 ```
-Code blocl
+Code block
 ```
