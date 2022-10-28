@@ -1,63 +1,65 @@
 # Lab Report 2
 
 ## Part 1: Simplest Little Tinie Weenie Search Engine
+
 I made a search engine that runs on my client machine! It's very *simple* but it gets the job done. Here is my code:
-```
-import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
 
-class Handler implements URLHandler {
-    ArrayList<String> strings = new ArrayList<String>();
+    ```
+    import java.io.IOException;
+    import java.net.URI;
+    import java.util.ArrayList;
 
-    public String handleRequest(URI url) {
-        System.out.printf("Path: %s Query: %s\n", url.getPath(), url.getQuery());
-        if (url.getPath().equals("/")) {
-            if (strings.size() == 0) {
-                return String.format("There's nothing to search for!\nTry adding strings to the data bank so you can query them.\n");
-            } else {
-                return String.format("Your strings: %s", String.join("\n", strings));
-            }
-        } else if (url.getPath().contains("/add")) {
-            String[] parameters = url.getQuery().split("=");
-            if (parameters[0].equals("s")) {
-                strings.add(parameters[1]);
-                return String.format("%s added!", parameters[1]);
-            } else {
-                return "You forgot the s\nThe query should have the format ?s=STRING";
-            }
-        } else if (url.getPath().contains("/search")) {
-            String[] parameters = url.getQuery().split("=");
-            if (parameters[0].equals("s")) {
-                String search = parameters[1];
-                ArrayList<String> results = new ArrayList<String>();
-                for (String str: strings) {
-                    if (str.contains(search)) {
-                        results.add(str);
-                    }
+    class Handler implements URLHandler {
+        ArrayList<String> strings = new ArrayList<String>();
+
+        public String handleRequest(URI url) {
+            System.out.printf("Path: %s Query: %s\n", url.getPath(), url.getQuery());
+            if (url.getPath().equals("/")) {
+                if (strings.size() == 0) {
+                    return String.format("There's nothing to search for!\nTry adding strings to the data bank so you can query them.\n");
+                } else {
+                    return String.format("Your strings: %s", String.join("\n", strings));
                 }
-                return String.format("Results:\n%s", String.join("\n", results));
-            } else {
-                return "You forgot the s\nThe query should have the format ?s=STRING";
+            } else if (url.getPath().contains("/add")) {
+                String[] parameters = url.getQuery().split("=");
+                if (parameters[0].equals("s")) {
+                    strings.add(parameters[1]);
+                    return String.format("%s added!", parameters[1]);
+                } else {
+                    return "You forgot the s\nThe query should have the format ?s=STRING";
+                }
+            } else if (url.getPath().contains("/search")) {
+                String[] parameters = url.getQuery().split("=");
+                if (parameters[0].equals("s")) {
+                    String search = parameters[1];
+                    ArrayList<String> results = new ArrayList<String>();
+                    for (String str: strings) {
+                        if (str.contains(search)) {
+                            results.add(str);
+                        }
+                    }
+                    return String.format("Results:\n%s", String.join("\n", results));
+                } else {
+                    return "You forgot the s\nThe query should have the format ?s=STRING";
+                }
             }
+            return "404 Not Found!";
         }
-        return "404 Not Found!";
     }
-}
 
-class SearchEngine {
-    public static void main(String[] args) throws IOException {
-        if(args.length == 0) {
-            System.out.println("Missing port number! Try any number between 1024 to 49151");
-            return;
+    class SearchEngine {
+        public static void main(String[] args) throws IOException {
+            if(args.length == 0) {
+                System.out.println("Missing port number! Try any number between 1024 to 49151");
+                return;
+            }
+
+            int port = Integer.parseInt(args[0]);
+
+            Server.start(port, new Handler());
         }
-
-        int port = Integer.parseInt(args[0]);
-
-        Server.start(port, new Handler());
     }
-}
-```
+    ```
 
 Now let's take a look at the results.
 
@@ -80,118 +82,116 @@ It looks like we have a few problems in our code. Let's find the failure-inducin
 
 1. reverseInPlace (ArrayExamples)
 - Original code:
-```
-static void reverseInPlace(int[] arr) {
-    for(int i = 0; i < arr.length; i += 1) {
-        arr[i] = arr[arr.length - i - 1];
+    ```
+    static void reverseInPlace(int[] arr) {
+        for(int i = 0; i < arr.length; i += 1) {
+            arr[i] = arr[arr.length - i - 1];
+        }
     }
-}
-```
+    ```
 
 - Failure-inducing inputs:
-    input1 is {1,2,3,4}
-    input2 is {1,2,3,4,5}
+    - input1 is {1,2,3,4}
+    - input2 is {1,2,3,4,5}
 
-* Symptoms:
-- input1 outputs {1,2,2,1}
-- input2 outputs {1,2,3,2,1}
+- Symptoms:
+    - input1 outputs {1,2,2,1}
+    - input2 outputs {1,2,3,2,1}
 
-* Bugs:
-- No temporary variable is defined.
-- Iterates throug whole array, so if a temporary variable were incorporated, it would reverse twice over, effectively not reversing at all.
+- Bugs:
+    - No temporary variable is defined.
+    - Iterates throug whole array, so if a temporary variable were incorporated, it would reverse twice over, effectively not reversing at all.
 
-* Fixed code:
-```
-static int[] reversed(int[] arr) {
-    int[] newArray = new int[arr.length];
-    for (int i = 0; i < arr.length; i += 1) {
-        newArray[i] = arr[arr.length - i - 1];
+- Fixed code:
+    ```
+    static int[] reversed(int[] arr) {
+        int[] newArray = new int[arr.length];
+        for (int i = 0; i < arr.length; i += 1) {
+            newArray[i] = arr[arr.length - i - 1];
+        }
+        return newArray;
     }
-    return newArray;
-}
-```
+    ```
 
-* Explanation:
-- There were two bugs, but one was the logical result of the other. The idea was to run through the entire array setting the element at index i to the element at the "opposite" index. Essentially flipping the array hence reversing it in place. The problem here is you overwrite the early values in the array so once the index is halfway through the for-loop you get both no changes to the array and loss of data.
+- Explanation:
+    - There were two bugs, but one was the logical result of the other. The idea was to run through the entire array setting the element at index i to the element at the "opposite" index. Essentially flipping the array hence reversing it in place. The problem here is you overwrite the early values in the array so once the index is halfway through the for-loop you get both no changes to the array and loss of data.
 
 2. filter (ListExamples)
-* Original code:
-```
-interface StringChecker {
-    boolean checkString(String s);
-}
-
-class ListExamples {
-    static List<String> filter(List<String> list, StringChecker sc) {
-        List<String> result = new ArrayList<>();
-        for (String s : list) {
-            if (sc.checkString(s)) {
-                result.add(s);
-            }
-        }
-    return result;
-  }
-}
-```
-```
-public class ListTests {
-    @Test
-    public void testFilter() {
-        List<String> input1 = Arrays.asList("1", "12", "123", "1234", "12345", "123456");
-        assertEquals(Arrays.asList("1", "12", "123", "1234"), ListExamples.filter(input1, null));
-    }
-}
-```
-
-* Failure-inducing inputs:
-- None?
-- input1 = {"1", "12", "123", "1234", "12345", "123456"};
-
-* Symptoms:
-- We cannot run the test because no StringChecker object exists.
-- If we use **null** as the StringChecker object then we receive:
-```
-1) testFilter(ListTests)
-java.lang.NullPointerException: Cannot invoke "StringChecker.checkString(String)" because "<parameter2>" is null
-        at ListExamples.filter(ListExamples.java:23)
-        at ListTests.testFilter(ListTests.java:12)
-```
-
-* Bugs:
-- The StringChecker interface is defined but no object inherits from it. Furthermore, the method proposed by the StringChecker interface is never defined.
-
-* Fixed code:
-```
-interface StringChecker {
-    boolean checkString(String s);
-}
-
-class ListExamples implements StringChecker {
-    @Override
-    public boolean checkString(String s) {
-        return s.length() < 5;
+- Original code:
+    ```
+    interface StringChecker {
+        boolean checkString(String s);
     }
 
-    static List<String> filter(List<String> list, StringChecker sc) {
-        List<String> result = new ArrayList<>();
-        for (String s : list) {
-            if (sc.checkString(s)) {
-                result.add(s);
+    class ListExamples {
+        static List<String> filter(List<String> list, StringChecker sc) {
+            List<String> result = new ArrayList<>();
+            for (String s : list) {
+                if (sc.checkString(s)) {
+                    result.add(s);
+                }
             }
-        }
         return result;
     }
-}
-```
-```
-public class ListTests {
-    @Test
-    public void testFilter() {
-        List<String> input1 = Arrays.asList("1", "12", "123", "1234", "12345", "123456");
-        assertEquals(Arrays.asList("1", "12", "123", "1234"), ListExamples.filter(input1, new ListExamples()));
     }
-}
-```
 
-* Explanation:
-- The easiest way to fix this bug is to allow ListExamples to inherit from StringChecker then define the checkString method in ListExamples. A larger problem here with no visible symptoms is allowing ListExamples to inherit from StringChecker. It serves no purpose. StringChecker should be it's own object.
+    public class ListTests {
+        @Test
+        public void testFilter() {
+            List<String> input1 = Arrays.asList("1", "12", "123", "1234", "12345", "123456");
+            assertEquals(Arrays.asList("1", "12", "123", "1234"), ListExamples.filter(input1, null));
+        }
+    }
+    ```
+
+- Failure-inducing inputs:
+    - None?
+    - input1 = {"1", "12", "123", "1234", "12345", "123456"};
+
+- Symptoms:
+    - We cannot run the test because no StringChecker object exists.
+    - If we use **null** as the StringChecker object then we receive:
+    ```
+    1) testFilter(ListTests)
+    java.lang.NullPointerException: Cannot invoke "StringChecker.checkString(String)" because "<parameter2>" is null
+            at ListExamples.filter(ListExamples.java:23)
+            at ListTests.testFilter(ListTests.java:12)
+    ```
+
+- Bugs:
+    - The StringChecker interface is defined but no object inherits from it. Furthermore, the method proposed by the StringChecker interface is never defined.
+
+- Fixed code:
+    ```
+    interface StringChecker {
+        boolean checkString(String s);
+    }
+
+    class ListExamples implements StringChecker {
+        @Override
+        public boolean checkString(String s) {
+            return s.length() < 5;
+        }
+
+        static List<String> filter(List<String> list, StringChecker sc) {
+            List<String> result = new ArrayList<>();
+            for (String s : list) {
+                if (sc.checkString(s)) {
+                    result.add(s);
+                }
+            }
+            return result;
+        }
+    }
+
+    public class ListTests {
+        @Test
+        public void testFilter() {
+            List<String> input1 = Arrays.asList("1", "12", "123", "1234", "12345", "123456");
+            assertEquals(Arrays.asList("1", "12", "123", "1234"), ListExamples.filter(input1, new ListExamples()));
+        }
+    }
+    ```
+
+- Explanation:
+    - The easiest way to fix this bug is to allow ListExamples to inherit from StringChecker then define the checkString method in ListExamples. A larger problem here with no visible symptoms is allowing ListExamples to inherit from StringChecker. It serves no purpose. StringChecker should be it's own object.
