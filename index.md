@@ -2,8 +2,8 @@
 **A17220992**
 
 ## Lab Reports
-- [Week 0](./week-0/lab-report-week-0.md)
-- [Week 1](./week-1/lab-report-week-1.md)
-- [Week 3](./week-3/lab-report-week-3.md)
-- [Week 5](./week-5/lab-report-week-5.md)
-- [Week 7](./week-7/lab-report-week-7.md)
+- [Week 0](./week-0/lab-report-0-week-0.md)
+- [Week 1](./week-1/lab-report-1-week-1.md)
+- [Week 3](./week-3/lab-report-2-week-3.md)
+- [Week 5](./week-5/lab-report-3-week-5.md)
+- [Week 7](./week-7/lab-report-4-week-7.md)
