@@ -64,7 +64,7 @@ We can group these keystrokes into five main sections:
     ![image](3.2.jpg)
 
     `.`
-    
+
     ![image](3.3.jpg)
 
 5. `:wq<enter>`
@@ -72,3 +72,11 @@ We can group these keystrokes into five main sections:
     And boom! We're done. Finally we save the edits and exit Vim.
 
 ## Part 2
+
+I completed the edit while logged into an ssh session using vim in 30 seconds.
+
+I completed the edit from VSCode then secure copying to the remote server in 45 seconds.
+
+In this case, vim enhanced my workflow by 30%, which on any project would be a game changer! The problem is not all projects may be as simple as editing a line in a file. For the majority of projects I would rather use VSCode because I'm comfortable and more efficient editing on an *advanced* text editor or an IDE than I am on a command line text editor like vim. Perhaps if I practice using vim then I'll develop my vim skills and one day prefer vim for editing on a remote server. But until that day, vim is not my first choice.
+
+Vim.
