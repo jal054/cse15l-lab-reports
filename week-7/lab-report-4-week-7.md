@@ -1,7 +1,9 @@
-<style>img[alt=drawing]{width: 300px;}</style>
+<style>img[alt=drawing]{width: 200px;}</style>
+
 # Week 7 Lab Report
 
 ## Part 1
+
 We want to edit the file `DocSearchServer.java` so the parameter `start` in the class `FileHelpers` is changed to `base` in as few keystrokes as possible using vim.
 
 We want to turn this:
@@ -14,22 +16,24 @@ I (my group and I didn't get very far in lab) minimized the task to these 22 key
 
 `/start<enter>cebase<esc>n.n.:wq<enter>`
 
-We can group these keystrokes into four main sections:
+We can group these keystrokes into five main sections:
 
-0. `vim DocSearchServer.java`
+1. `vim DocSearchServer.java`
 
     First we open `DocSearchServer.java` with vim (which does not count toward the 22 keystrokes).
-    ![image](0.0.jpg)
+
+    ![image](0.0.jpeg)
+
     ![image](0.1.jpg)
 
-1. `/start<enter>`
+2. `/start<enter>`
 
     Now let's find the first instance of the parameter `start`.
 
-    We'll do this using the `/` command followed by our search parameter `start` then `<enter>`.
+    We'll do this using the search command `/` followed by our search parameter `start` then `<enter>`.
     ![image](1.0.jpg)
 
-2. `cebase`
+3. `cebase`
 
     Next we delete the first instance of the parameter `start` using the command `ce` which will take us into **insert mode**.
     ![image](2.0.jpg)
@@ -37,7 +41,7 @@ We can group these keystrokes into four main sections:
     Then we can replace it with the parameter `base`.
     ![image](2.1.jpg)
 
-3. `<esc>n.n.`
+4. `<esc>n.n.`
 
     This is where the fun begins.
     
@@ -45,7 +49,7 @@ We can group these keystrokes into four main sections:
 
     We don't need to repeat steps 1 or 2 to replace the other instances! Instead, we'll use the commands `n` and `.` to find and replace the other two instances of the parameter `start`.
     
-    `<esc>n`
+    `n`
     ![image](3.0.jpg)
     `.`
     ![image](3.1.jpg)
@@ -54,6 +58,8 @@ We can group these keystrokes into four main sections:
     `.`
     ![image](3.3.jpg)
 
-4. `:wq<enter>`
+5. `:wq<enter>`
 
-    And boom! We're done. All that's left is to save the edits and exit Vim.
+    And boom! We're done. Finally we save the edits and exit Vim.
+
+## Part 2
