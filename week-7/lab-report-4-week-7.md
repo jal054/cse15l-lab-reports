@@ -1,4 +1,4 @@
-<style>img[alt=drawing]{width: 200px;}</style>
+<style>img[alt=image]{width: max(50vw, 50vh);}</style>
 
 # Week 7 Lab Report
 
