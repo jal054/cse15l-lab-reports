@@ -1,3 +1,5 @@
+<style>img[alt=image]{width: max(50vw, 50vh);}</style>
+
 # Week 3 Lab Report
 
 ## Part 1: Simplest Little Tinie Weenie Search Engine
@@ -64,16 +66,16 @@ Now let's take a look at the results.
 
 1. First we add the string **fineapple**.
 How do we add a string? What happens behind the scenes? The path and query used to add a string to our search engine are of the form `http://localhost:4000/add?s=STRING`. We will replace **STRING** with **fineapple**. The function `handleRequest` of the class `Handler` is called, then enters an if-else tree. Since the path does not equal `/`, we move onto the next if statement. The path does contain `/add` so we enter this branch. A string array called `parameters` is created which contains the url query split on `=`. We now have two elements in the array. The first should be the string `s` and the second is the string we want to add. If the first element is not `s` we cannot add the second element to our database. Then we add **fineapple** to our list of strings. Note: My bestfriend's IG in middle school was andres_the_fineapple.
-![](add-fineapple.jpeg)
+![image](add-fineapple.jpeg)
 
 2. Next we add **sarcoidosis**. I learned this word from House, it's usually bad, it's a disease... and we get an error trying to add it. Why? Because our query is wrong! We used `?q=sarcoidosis` instead of `?s=sarcoidosis`. The if-else tree determined that `parameters[0]` was not equal to `s` so we entered the else branch. Then we received this message:
-![](fail-add-sarcoidosis.jpeg)
+![image](fail-add-sarcoidosis.jpeg)
 But not worry! Let's fix our mistake so we can successfully add "a rare condition that causes small patches of swollen tissue, called granulomas, to develop in the organs of the body." I mean **sarcoidosis**.
-![](add-sarcoidosis.jpeg)
+![image](add-sarcoidosis.jpeg)
 
 3. Lastly we search our database for any string containing a particular string. Most of the strings I added contain **app** so we're going to search for the string **pp**.
 Searching for a string is similar to adding a string. We need the path and query used to search for a string to be of the form `http://localhost:4000/search?s=STRING`. In our case **STRING** will be replaced with **pp**. We once again enter our if-else tree via the `handleRequest` method in `Handler`. This time our path doesn't contain `/add` but instead contains `search/`. We once again create a string array called `parameters` containing the the query split on `=`. The array contains two elements, the string `s` and our search parameter. We create an arraylist called `results` to hold all strings we find containing the search parameter **pp**. We then print out the results to the webpage!
-![](search-pp.jpeg)
+![image](search-pp.jpeg)
 
 ## Part 2: Bugs
 
