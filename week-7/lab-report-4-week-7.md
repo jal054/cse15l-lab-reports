@@ -7,9 +7,11 @@
 We want to edit the file `DocSearchServer.java` so the parameter `start` in the class `FileHelpers` is changed to `base` in as few keystrokes as possible using vim.
 
 We want to turn this:
+
 ![image](start.jpg)
 
 into this:
+
 ![image](base.jpg)
 
 I (my group and I didn't get very far in lab) minimized the task to these 22 keystrokes:
@@ -50,12 +52,19 @@ We can group these keystrokes into five main sections:
     We don't need to repeat steps 1 or 2 to replace the other instances! Instead, we'll use the commands `n` and `.` to find and replace the other two instances of the parameter `start`.
     
     `n`
+
     ![image](3.0.jpg)
+
     `.`
+
     ![image](3.1.jpg)
+
     `n`
+
     ![image](3.2.jpg)
+
     `.`
+    
     ![image](3.3.jpg)
 
 5. `:wq<enter>`
