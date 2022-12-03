@@ -1,4 +1,4 @@
-# Lab Report Week 5
+# Week 5 Lab Report
 
 The `find` command is commonly used to find files in bash. But that's boring, because we'd rather find files with **\*glamour\***. I'm talking about command options!
 

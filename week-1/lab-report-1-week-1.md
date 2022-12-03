@@ -1,4 +1,4 @@
-# Lab Report Week 1
+# Week 1 Lab Report
 
 ## Installing VScode
 1. Install [VScode](https://code.visualstudio.com/Download) for your OS.

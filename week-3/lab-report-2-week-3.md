@@ -1,4 +1,4 @@
-# Lab Report Week 3
+# Week 3 Lab Report
 
 ## Part 1: Simplest Little Tinie Weenie Search Engine
 
