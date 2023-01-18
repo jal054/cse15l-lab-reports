@@ -11,6 +11,7 @@ img[alt=image] {width: max(50vw, 50vh);}
 1. Install [VScode](https://code.visualstudio.com/Download) for your OS.
 2. On mac, extract the .dmg from the .zip file then drag the .dmg into your applications folder. On windows, follow the prompts for installation. Open VScode.
 3. Now that VScode is intsalled and opened, let's try to open a terminal! Use the **ctrl+`** shortcut on mac or navigate to the button illustrated in the following screenshot:
+
 ![image](vscode.jpeg)
 
 ## Remotely Connecting
@@ -19,6 +20,7 @@ img[alt=image] {width: max(50vw, 50vh);}
 3. You *do* want to continue connecting so enter `yes`.
 4. Now enter your password. **Warning:** your password will not show up as letters nor little circles. You'll have several attempts, but it may be easier to type out your password elsewhere then copy/paste it into the terminal.
 5. Once your in, you should see something like this:
+
 ![image](ssh-connection.jpeg)
 
 ## Trying Some Commands
@@ -27,6 +29,7 @@ img[alt=image] {width: max(50vw, 50vh);}
 3. How do we go back a directory? Use `cd ..`.
 4. This is kind of boring, let's try some options! Options are given after a command and specify parameters the command should follow. For instance, the `ls` command only shows directories, but if you also want to see files, try `ls -a`. The `-a` option stands for all.
 5. Now try the command `exit` which will take you back to your client machine... the local machine you're working from. Now try an `ls` command on that!
+
 ![image](commands.jpeg)
 
 ## Moving Files with scp
@@ -49,6 +52,7 @@ java WhereAmI
 ```
 4. Now run the command `scp WhereAmI.java cs15lfa22zz@ieng6.ucsd.edu:~/` to securely transfer to the remote server. Be sure to replace the **zz** portion again! Then type in your password.
 5. Now ssh into the remote server using the command from earlier and run the file using the command above!
+
 ![image](scp.jpeg)
 
 ## Setting an SSH Key
@@ -60,6 +64,7 @@ java WhereAmI
 6. Now, we can securely copy the public key to the remote server using the `scp` command. Run the command `scp /Users/USER/.ssh/id_rsa.pub cs15lfa22zz@ieng6.ucsd.edu:~/.ssh/authorized_keys` be sure to replace **USER** with the directory on your client machine and **zz** with... well you know what.
 7. Now let's FINALLY type out password in for the last time. Run `ssh cs15lfa22zz@ieng6.ucsd.edu` and enter your password.
 8. From now on, ssh-ing will not require a password!
+
 ![image](ssh-keys.jpeg)
 
 ## Optimizing Remote Running
@@ -67,4 +72,5 @@ java WhereAmI
 2. You can run commands from the client machine on the remote server using `ssh cs15lfa22@ieng6.ucsd.edu "COMMANDS"`. Try running `ssh cs15lfa22@ieng6.ucsd.edu "ls"`. It runs the command, prints the output, then logs out. It's as if you never even logged in.
 3. You can also run multiple commands on the same line. Try running `cp WhereAmI.java OtherMain.java; javac OtherMain.java; java WhereAmI` on your client machine to create a copy of **WhereAmI.java** called **OtherMain.java** AND compile AND run **OtherMain** all in the same line.
 4. Lastly, the **up** and **down** arrow keys allow you to run previous commands.
+
 ![image](optimize.jpeg)

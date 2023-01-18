@@ -38,14 +38,17 @@ We can group these keystrokes into five main sections:
     Now let's find the first instance of the parameter `start`.
 
     We'll do this using the search command `/` followed by our search parameter `start` then `<enter>`.
+
     ![image](1.0.jpg)
 
 3. `cebase`
 
     Next we delete the first instance of the parameter `start` using the command `ce` which will take us into **insert mode**.
+
     ![image](2.0.jpg)
 
     Then we can replace it with the parameter `base`.
+    
     ![image](2.1.jpg)
 
 4. `<esc>n.n.`
