@@ -1,3 +1,9 @@
+<style>
+img[alt=image] {width: max(50vw, 50vh);}
+body {background-color: black; color: white;}
+.markdown-body .highlight pre, .markdown-body pre {background-color: #080830; border-radius:8px}
+</style>
+
 # Jacob Lee
 **A17220992**
 
