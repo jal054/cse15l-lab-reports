@@ -1,7 +1,8 @@
 <style>
+.markdown-body .highlight pre {background-color: #202020; color: white; border-radius: 8px;}
+body {background-color: black; color: #f0f0f0;}
 img[alt=image] {width: max(50vw, 50vh);}
-body {background-color: black; color: white;}
-.markdown-body .highlight pre, .markdown-body pre {background-color: #080830; border-radius:8px}
+.highlight {background-color: black;}
 </style>
 
 # Week 0 Lab Report
