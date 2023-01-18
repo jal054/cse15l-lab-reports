@@ -1,5 +1,5 @@
 <style>img[alt=image]{width: max(50vw, 50vh);}</style>
-<style>body, code{background-color: black; color: white;}</style>
+<style>body, pre{background-color: black; color: white;}</style>
 
 # Week 1 Lab Report
 
