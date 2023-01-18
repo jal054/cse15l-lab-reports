@@ -1,5 +1,8 @@
-<style>img[alt=image]{width: max(50vw, 50vh);}</style>
-<style>body, pre{background-color: black; color: white;}</style>
+<style>
+img[alt=image] {width: max(50vw, 50vh);}
+body {background-color: black; color: white;}
+.markdown-body .highlight pre, .markdown-body pre {background-color: #080830; border-radius:8px}
+</style>
 
 # Week 1 Lab Report
 
