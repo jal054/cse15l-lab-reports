@@ -27,7 +27,6 @@ img[alt=image] {width: max(50vw, 50vh);}
 3. How do we go back a directory? Use `cd ..`.
 4. This is kind of boring, let's try some options! Options are given after a command and specify parameters the command should follow. For instance, the `ls` command only shows directories, but if you also want to see files, try `ls -a`. The `-a` option stands for all.
 5. Now try the command `exit` which will take you back to your client machine... the local machine you're working from. Now try an `ls` command on that!
-
 ![image](commands.jpeg)
 
 ## Moving Files with scp
